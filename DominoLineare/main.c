@@ -1,7 +1,9 @@
 //893323
-#include<stdio.h>
-#include<stdlib.h>
-#include "GameManagement.c"
+#include <stdio.h>
+#include <stdlib.h>
+#include "GameManagement.h"
+
+nodo* game = NULL;    nodo* myT = NULL;
 
 int main()
 {
@@ -11,23 +13,23 @@ int main()
     printf("\nImmetti un numero di tessere con cui giocare: ");
 
     int n = 0;
-    //scanf("%i", &n);
-    //getchar();
-
-    nodo* game = NULL;
-    nodo* myT = NULL;
+    scanf("%i", &n);
+    getchar();
 
     system("CLS");
 
-    for(int i = 0; i < 10; i++)
+    for(int i = 0; i < n; i++)
     {
-        prepend(&myT, i, i+1);
-        prepend(&game, i, i+1);
+        append(&myT, i, i+1);
+        append(&game, i, i+1);
     }
     
-    printf("\n gioco: \n");
-    
+    printf("\n");
+
     PrintingGame(game, myT);
+
+    freeList(game);
+    freeList(myT);
 
     return 0;
 }
